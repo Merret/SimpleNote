@@ -35,7 +35,7 @@
 new ClipboardJS('.copy');
 var base = urldata("id");
 var data = xhr.get("https://api.myjson.com/bins/"+base);
-if(data != "xhr.GET Error. statue: 404"){loaddoc();}
+if(data != "xhr.GET Error. statue: 404"){data=JSON.parse(data);loaddoc();}
 function loaddoc() {
     document.getElementById("title").value = data.title;
     document.getElementById("content").value = data.content;
