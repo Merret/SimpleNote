@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>URL Saver</title>
+<title>Simple Note</title>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -56,6 +56,9 @@ function update() {
     data.content = document.getElementById("content").value;
     data.title = document.getElementById("title").value;
     xhr.put("https://api.myjson.com/bins/"+base, JSON.stringify(data));
+}
+function share() {
+    location.href="./read.htmlm?id="+base;
 }
 </script>
 </body>
