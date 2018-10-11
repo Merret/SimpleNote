@@ -16,8 +16,9 @@
 </style>
 </head>
 <body>
-<div id="workspace" class="w3-container" style="text-align: center">
-    <textarea height="70%" width="90%" id="content"></textarea>
+<div id="workspace" class="w3-container" style="">
+    <h1 id="title"></h1>
+    <p width="90%" id="content"></p>
 </div>
 <script>
 new ClipboardJS('.copy');
@@ -28,8 +29,8 @@ if(data != "xhr.GET Error. statue: 404") {
     loaddoc();
 }
 function loaddoc() {
-    document.getElementById("title").value = data.title;
-    document.getElementById("content").value = data.content;
+    document.getElementById("title").innerHTML = data.title;
+    document.getElementById("content").innerHTML = data.content;
 }
 </script>
 </body>
