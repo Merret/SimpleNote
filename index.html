@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <style>
 .button {
-	cursor: pointer
+    cursor: pointer
 }
 </style>
 </head>
@@ -22,7 +22,7 @@
     <input class="w3-input w3-border" id="title" type="text">
   </p>
   <span>
-    <button class="w3-btn w3-blue w3-round" onclick="create()">Create</button>
+    <button class="w3-btn w3-blue w3-round" id="sc" onclick="create()">Create</button>
   </span>
   <span class="w3-display-bottomright w3-padding">
     <a target="_blank" class="w3-btn w3-green w3-round" id="Share">Share</a>
@@ -35,7 +35,12 @@
 new ClipboardJS('.copy');
 var base = urldata("id");
 var data = xhr.get("https://api.myjson.com/bins/"+base);
-if(data != "xhr.GET Error. statue: 404"){data=JSON.parse(data);loaddoc();}
+if(data != "xhr.GET Error. statue: 404") {
+    data=JSON.parse(data);
+    loaddoc();
+    document.getElementById("sc").innerHTML = "Save";
+    document.getElementById("sc").onclick = function() {update();};
+}
 function loaddoc() {
     document.getElementById("title").value = data.title;
     document.getElementById("content").value = data.content;
