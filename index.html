@@ -19,7 +19,7 @@
 <div class="w3-card w3-padding w3-display-container">
   <p>
     <label class="w3-text-blue"><b>Title</b></label>
-    <input class="w3-input w3-border" id="url" type="text">
+    <input class="w3-input w3-border" id="title" type="text">
   </p>
   <span>
     <button class="w3-btn w3-blue w3-round" onclick="Create()">Add</button>
@@ -34,8 +34,24 @@
 <script>
 new ClipboardJS('.copy');
 var base = urldata("id");
-if(xhr.get("https://api.myjson.com/bins/"+base)=="xhr.GET Error. statue: 404"){location.href="create.html"}
-
+var data = xhr.get("https://api.myjson.com/bins/"+base);
+if(data != "xhr.GET Error. statue: 404"){loaddoc();}
+function loaddoc() {
+    document.getElementById("title").value = data.title;
+    document.getElementById("content").value = data.content;
+}
+function create() {
+    var doc = {};
+    doc.title = document.getElementById("title").value;
+    doc.content = "";
+    doc.time = Date.parse(Date());
+    location.href = "./?id=" + JSON.parse(xhr.post("https://api.myjson.com/bins", JSON.stringify(doc))).uri.substring(28);
+}
+function update() {
+    data.content = document.getElementById("content").value;
+    data.title = document.getElementById("title").value;
+    xhr.put("https://api.myjson.com/bins/"+base, JSON.stringify(data));
+}
 </script>
 </body>
 </html>
