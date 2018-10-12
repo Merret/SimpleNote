@@ -1,5 +1,5 @@
 # SimpleNote
-SimpleNote is a free service which provides a webpage to store text file and help you to share them with others.
+SimpleNote is a free service which provides a webpage to store text files and help you to share them with others.
 
 ## Usage
 Go to [https://merret.github.io/SimpleNote/](https://merret.github.io/SimpleNote/).
