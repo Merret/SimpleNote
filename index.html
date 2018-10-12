@@ -16,7 +16,7 @@
 </style>
 </head>
 <body>
-<div class="w3-card w3-padding w3-display-container">
+<div class="w3-card w3-padding w3-display-container" id="bar">
   <p>
     <label class="w3-text-blue"><b>Title</b></label>
     <input class="w3-input w3-border" id="title" type="text">
@@ -28,21 +28,28 @@
     <a target="_blank" class="w3-btn w3-green w3-round" id="share" onclick="share()">Share</a>
   </span>
 </div>
-<div id="workspace" class="w3-container" style="text-align: center">
-    <textarea height="70%" width="90%" id="content"></textarea>
+<div id="workspace" class="w3-container w3-padding" style="text-align: center">
+	<p class="w3-text-blue" style="text-align: left"><b>Content</b></p>
+    <textarea cols="60" rows="5" id="content"></textarea>
 </div>
 <script>
-while(document.getElementById("content").width<window.innerWidth*0.9) {
-    document.getElementById("content").cols++;
+while(document.getElementById("content").offsetWidth<document.getElementById("title").offsetWidth) {
+    ++document.getElementById("content").cols;
+}
+while(document.getElementById("content").offsetHeight<(window.innerHeight-document.getElementById("bar").offsetHeight)*0.9) {
+    ++document.getElementById("content").rows;
 }
 new ClipboardJS('.copy');
 var base = urldata("id");
 var data = xhr.get("https://api.myjson.com/bins/"+base);
 if(data != "xhr.GET Error. statue: 404") {
-    data=JSON.parse(data);
+    data = JSON.parse(data);
     loaddoc();
+	document.getElementById("content").focus();
     document.getElementById("sc").innerHTML = "Save";
     document.getElementById("sc").onclick = function() {update();};
+} else {
+    document.getElementById("title").focus();
 }
 function loaddoc() {
     document.getElementById("title").value = data.title;
