@@ -25,7 +25,7 @@
     <button class="w3-btn w3-blue w3-round" id="sc" onclick="create()">Create</button>
   </span>
   <span class="w3-display-bottomright w3-padding">
-    <a target="_blank" class="w3-btn w3-green w3-round" id="share" onclick="share()">Share</a>
+    <a target="_blank" class="w3-btn w3-green w3-round" id="share">Share</a>
   </span>
 </div>
 <div id="workspace" class="w3-container w3-padding" style="text-align: center">
@@ -39,6 +39,7 @@ while(document.getElementById("content").offsetWidth<document.getElementById("ti
 while(document.getElementById("content").offsetHeight<(window.innerHeight-document.getElementById("bar").offsetHeight)*0.9) {
     ++document.getElementById("content").rows;
 }
+document.getElementById("share").href="./read.html?id="+base;
 new ClipboardJS('.copy');
 var base = urldata("id");
 var data = xhr.get("https://api.myjson.com/bins/"+base);
@@ -66,9 +67,6 @@ function update() {
     data.content = document.getElementById("content").value;
     data.title = document.getElementById("title").value;
     xhr.put("https://api.myjson.com/bins/"+base, JSON.stringify(data));
-}
-function share() {
-    location.href="./read.html?id="+base;
 }
 </script>
 </body>
