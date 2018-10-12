@@ -32,6 +32,9 @@
     <textarea height="70%" width="90%" id="content"></textarea>
 </div>
 <script>
+while(document.getElementById("content").width<window.innerWidth*0.9) {
+    document.getElementById("content").cols++;
+}
 new ClipboardJS('.copy');
 var base = urldata("id");
 var data = xhr.get("https://api.myjson.com/bins/"+base);
