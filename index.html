@@ -39,9 +39,9 @@ while(document.getElementById("content").offsetWidth<document.getElementById("ti
 while(document.getElementById("content").offsetHeight<(window.innerHeight-document.getElementById("bar").offsetHeight)*0.9) {
     ++document.getElementById("content").rows;
 }
-document.getElementById("share").href="./read.html?id="+base;
 new ClipboardJS('.copy');
 var base = urldata("id");
+document.getElementById("share").href="./read.html?id="+base;
 var data = xhr.get("https://api.myjson.com/bins/"+base);
 if(data != "xhr.GET Error. statue: 404") {
     data = JSON.parse(data);
