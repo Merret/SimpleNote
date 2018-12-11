@@ -59,7 +59,7 @@ function loaddoc() {
 function create() {
     var doc = {};
     doc.title = document.getElementById("title").value;
-    doc.content = "";
+    doc.content = document.getElementById("content").value;
     doc.time = Date.parse(Date());
     location.href = "./?id=" + JSON.parse(xhr.post("https://api.myjson.com/bins", JSON.stringify(doc))).uri.substring(28);
 }
