@@ -66,6 +66,7 @@ function create() {
 function update() {
     data.content = document.getElementById("content").value;
     data.title = document.getElementById("title").value;
+    data.lastestEdit = Date.parse(new Date());
     xhr.put("https://api.myjson.com/bins/"+base, JSON.stringify(data));
 }
 </script>
